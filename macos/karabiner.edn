@@ -1,0 +1,281 @@
+{
+	:applications
+	{
+		:chrome ["^com\\.google\\.Chrome(\\.app\\.[a-z]+)?$"]
+		:safari ["^com\\.apple\\.Safari$"]
+		:iterm2 ["^com\\.googlecode\\.iterm2$"]
+		:vscode ["^com\\.microsoft\\.VSCode$"]
+		:ffxiv  [:paths "^/Applications/XIV on Mac\\.app/Contents/Resources/wine/bin/wine64-preloader$"]
+	}
+
+	:devices
+	{
+		;Apple (built-in)
+		:builtin-keyboard [{ :is_built_in_keyboard        true }]
+		:builtin-trackpad [{ :is_built_in_pointing_device true }]
+
+		;Havit
+		:havit-keyboard [{ :vendor_id 1241                   }]
+		:HV-KB390L      [{ :vendor_id 1241 :product_id 41265 }]
+		:HV-KB395L      [{ :vendor_id 1241 :product_id 41437 }]
+
+		;Trackball Mouse
+		:elecom-trackball [{ :vendor_id 1390                 }]
+		:EX-G             [{ :vendor_id 1390 :product_id 249 }]
+	}
+
+	:input-sources
+	{
+		:abc
+		{
+			:input_mode_id "com.apple.inputmethod.ABC"
+			:language "en"
+		}
+
+		:en
+		{
+			:input_mode_id "com.apple.inputmethod.Roman"
+			:language "en"
+		}
+
+		:ja
+		{
+			:input_mode_id "com.apple.inputmethod.Japanese"
+			:language "ja"
+		}
+	}
+
+	:tos
+	{
+		; if lazy == true, to doesn't fired until another key downed
+		:left_command_lazy
+		{
+			:key left_command
+			:lazy true
+			:hold_down_ms 100
+		}
+
+		:left_option_lazy
+		{
+			:key left_option
+			:lazy true
+			:hold_down_ms 100
+		}
+
+		:right_command_lazy
+		{
+			:key :right_command
+			:lazy true
+			:hold_down_ms 100
+		}
+
+		:fn_lazy
+		{
+			:key :fn
+			:lazy true
+			:hold_down_ms 100
+		}
+	}
+
+	; !  | means mandatory
+	; #  | means optional
+	; C  | left_command
+	; T  | left_control
+	; O  | left_option
+	; S  | left_shift
+	; F  | fn
+	; Q  | right_command
+	; W  | right_control
+	; E  | right_option
+	; R  | right_shift
+	; P  | caps_lock
+	; !! | mandatory command + control + optional + shift (hyper)
+	; ## | optional any
+	:main
+	[
+		{
+			:des "IME improvement"
+			:rules
+			[
+				[:!Sspacebar    :spacebar       nil]
+
+				; Apple Internal Keyboard
+				[:right_command :japanese_kana  :en :builtin-keyboard]
+				[:right_command :japanese_eisuu :ja :builtin-keyboard]
+
+				; Non-Apple Keyboard
+				;[:right_option :japanese_kana   :en :!builtin-keyboard]
+				;[:right_option :japanese_eisuu  :ja :!builtin-keyboard]
+			]
+		}
+		{
+			:des "Function modification"
+			:rules
+			[
+				[:##fn :left_command :builtin-keyboard]
+
+				; Media keys
+				[ :!Cf1 :display_brightness_decrement :builtin-keyboard]
+				[:!PCf1 :display_brightness_decrement :builtin-keyboard]
+				[ :!Cf2 :display_brightness_increment :builtin-keyboard]
+				[:!PCf2 :display_brightness_increment :builtin-keyboard]
+				[ :!Cf3 :illumination_decrement       :builtin-keyboard]
+				[:!PCf3 :illumination_decrement       :builtin-keyboard]
+				[ :!Cf4 :illumination_increment       :builtin-keyboard]
+				[:!PCf4 :illumination_increment       :builtin-keyboard]
+				;[:!Cf5 :dictation :builtin-keyboard]
+				;f6 dnd
+				[ :!Cf7 :rewind                       :builtin-keyboard]
+				[:!PCf7 :rewind                       :builtin-keyboard]
+				[ :!Cf8 :play_or_pause                :builtin-keyboard]
+				[:!PCf8 :play_or_pause                :builtin-keyboard]
+				[ :!Cf9 :fastforward                  :builtin-keyboard]
+				[:!PCf9 :fastforward                  :builtin-keyboard]
+				[ :!Cf10 :mute                        :builtin-keyboard]
+				[:!PCf10 :mute                        :builtin-keyboard]
+				[ :!Cf11 :volume_decrement            :builtin-keyboard]
+				[:!PCf11 :volume_decrement            :builtin-keyboard]
+				[ :!Cf12 :volume_increment            :builtin-keyboard]
+				[:!PCf12 :volume_increment            :builtin-keyboard]
+
+				; F5 to reload page on Browsers
+				[:##f5 :!Cr :chrome]
+				[:##f5 :!Cr :safari]
+				[:##f12 :f13 :builtin-keyboard]
+				[:##print_screen :f13 :!apple-keyboard]
+			]
+		}
+		{
+			:des "Right Option modification"
+	 		:rules
+			[
+				[ :!Ereturn_or_enter :!Qreturn_or_enter nil]
+				[:!PEreturn_or_enter :!Qreturn_or_enter nil]
+
+				[ :!Eleft_arrow   :home nil]
+				[:!SEleft_arrow :!Shome nil]
+
+				[ :!Eright_arrow   :end nil]
+				[:!SEright_arrow :!Send nil]
+
+				[ :!Eup_arrow   :page_up nil]
+				[:!SEup_arrow :!Spage_up nil]
+				[:!CEup_arrow :!Qup_arrow nil]
+
+				[ :!Edown_arrow   :page_down nil]
+				[:!SEdown_arrow :!Spage_down nil]
+			]
+		}
+		{
+			:des "Capslock to Hyper"
+			:rules
+			[
+				[:##caps_lock :!QWEright_shift :!ffxiv]
+				[:caps_lock   :left_shift      :ffxiv ]
+				[:!!return_or_enter :!Creturn_or_enter nil]
+
+				; Treat as Shift
+				[:!!a :!Sa nil] [:!!b :!Sb nil] [:!!c :!Sc nil] [:!!d :!Sd nil]
+				[:!!e :!Se nil] [:!!f :!Sf nil] [:!!g :!Sg nil] [:!!h :!Sh nil]
+				[:!!i :!Si nil] [:!!j :!Sj nil] [:!!k :!Sk nil] [:!!l :!Sl nil]
+				[:!!m :!Sm nil] [:!!n :!Sn nil] [:!!o :!So nil] [:!!p :!Sp nil]
+				[:!!q :!Sq nil] [:!!r :!Sr nil] [:!!s :!Ss nil] [:!!t :!St nil]
+				[:!!u :!Su nil] [:!!v :!Sv nil] [:!!w :!Sw nil] [:!!x :!Sx nil]
+				[:!!y :!Sy nil] [:!!z :!Sz nil] [:!!1 :!S1 nil] [:!!2 :!S2 nil]
+				[:!!3 :!S3 nil] [:!!4 :!S4 nil] [:!!5 :!S5 nil] [:!!6 :!S6 nil]
+				[:!!7 :!S7 nil] [:!!8 :!S8 nil] [:!!9 :!S9 nil] [:!!0 :!S0 nil]
+				[:!!grave_accent_and_tilde    :!Sgrave_accent_and_tilde    nil]
+				[:!!hyphen                    :!Shyphen                    nil]
+				[:!!equal_sign                :!Sequal_sign                nil]
+				[:!!open_bracket              :!Sopen_bracket              nil]
+				[:!!close_bracket             :!Sclose_bracket             nil]
+				[:!!backslash                 :!Sbackslash                 nil]
+				[:!!semicolon                 :!Ssemicolon                 nil]
+				[:!!quote                     :!Squote                     nil]
+				[:!!comma                     :!Scomma                     nil]
+				[:!!period                    :!Speriod                    nil]
+				[:!!slash                     :!Sslash                     nil]
+			]
+		}
+		{
+			:des "AltTab + Rectangle improvement"
+			:rules
+			[
+				[
+					:!Ctab [:!Ctab ["alt-tab" 1]] :builtin-keyboard
+					{
+						:afterup ["alt-tab" 0]
+					}
+				]
+
+				[
+					:!Otab [:!Ctab ["alt-tab" 1]] :!builtin-keyboard
+					{
+						:afterup ["alt-tab" 0]
+					}
+				]
+
+				[:!Oup_arrow    :!Cup_arrow    [:!builtin-keyboard ["alt-tab" 1]]]
+				[:!Odown_arrow  :!Cdown_arrow  [:!builtin-keyboard ["alt-tab" 1]]]
+				[:!Oleft_arrow  :!Cleft_arrow  [:!builtin-keyboard ["alt-tab" 1]]]
+				[:!Oright_arrow :!Cright_arrow [:!builtin-keyboard ["alt-tab" 1]]]
+
+				[:!Cup_arrow     :!!up_arrow    ["alt-tab" 0]]
+				[:!Cdown_arrow   :!!down_arrow  ["alt-tab" 0]]
+				[:!Cright_arrow  :!!right_arrow ["alt-tab" 0]]
+				[:!Cleft_arrow   :!!left_arrow  ["alt-tab" 0]]
+			]
+		}
+		{
+			:des "Windows keyboard improvement"
+			:rules
+			[
+			;--- Control Key ---
+				;Select All
+				[:!Ta :!Ca [
+					:!builtin-keyboard
+					:!iterm2 ;conflicts screen
+				]]
+				;Copy
+				[:!Tc :!Cc [
+					:!builtin-keyboard
+					:!iterm2 ;conflicts shell
+				]]
+				;Search
+				[:!Tf :!Cf [
+					:!builtin-keyboard
+				]]
+				;Replace
+				[:!Th :!COf [
+					:!builtin-keyboard
+					:vscode ;apply VSCode
+				]]
+				;Save
+				[:!Ts :!Cs [
+					:!builtin-keyboard
+				]]
+				;Paste
+				[:!Tv :!Cv [
+					:!builtin-keyboard
+				]]
+				;Cut
+				[:!Tx :!Cx [
+					:!builtin-keyboard
+					:!iterm2 ;conflicts nano
+				]]
+				;Redo
+				[:!Ty :!CSz [
+					:!builtin-keyboard
+				]]
+				;Undo
+				[:!Tz :!Cz [
+					:!builtin-keyboard
+				]]
+
+				;[:!Treturn_or_enter :return_or_enter :!builtin-keyboard]
+			;--- End Control Key ---
+
+			]
+		}
+	]
+}
