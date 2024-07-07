@@ -1,0 +1,18 @@
+[user]
+	email = ayame@kataba.me
+	name = katabame
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPS7mkE0IiW587EOkHIDAC8wySK0AHOHGH68bW14yDjA
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	program = /opt/1Password/op-ssh-sign
+[commit]
+	gpgsign = true
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[init]
+	defaultBranch = main

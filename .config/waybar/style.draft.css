@@ -1,0 +1,56 @@
+* {
+    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    font-size: 13px;
+}
+
+window#waybar {
+    background-color: #303446;
+    color: #ffffff;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+.modules-left {
+    margin-left: 0.5rem;
+}
+
+.modules-center {
+    background-color: #ffffff;
+    color: #000000;
+    border-radius: 15px;
+    padding: 0 20px;
+}
+
+.modules-right {
+    margin-right: 2rem;
+}
+
+#custom-launcher {
+    color: #e95420;
+    font-size: 15px;
+}
+
+#workspaces button {
+    padding: 0 0.5em;
+    background-color: #414559;
+    color: #c6d0f5;
+    margin: 0.25em;
+}
+
+#workspaces button:hover {
+    background: #737994;
+    border: #737994;
+    box-shadow: inherit;
+    text-shadow: inherit;
+}
+
+#mpris {
+    background-color: #ffffff;
+    color: #000000;
+    border-radius: 2rem;
+    padding: 0 20px;
+}
+#mpris.cider {
+    color: #ffffff;
+    background-color: #f94c57;
+}

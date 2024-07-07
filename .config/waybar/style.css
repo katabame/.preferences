@@ -1,0 +1,35 @@
+#custom-ubuntu {
+    color: orange;
+}
+
+#custom-shutdown {
+    color: red;
+}
+
+#custom-reboot {
+    color: yellow;
+}
+
+#custom-logout {
+    color: green;
+}
+
+/*
+window#waybar {
+    background-color: white;
+}
+
+
+.modules-left {
+    padding-left: 2rem;
+}
+
+*/
+
+#tray {
+    padding: 0 2rem;
+}
+
+.modules-right {
+    padding-right: 2rem;
+}
