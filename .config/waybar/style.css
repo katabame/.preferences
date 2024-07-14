@@ -1,35 +1,46 @@
+#power {
+    padding: 0 1rem;
+}
+
 #custom-ubuntu {
     color: orange;
 }
 
 #custom-shutdown {
     color: red;
+    margin: 0 0.5rem;
 }
 
 #custom-reboot {
     color: yellow;
+    margin: 0 0.5rem;
 }
 
 #custom-logout {
     color: green;
+    margin: 0 0.5rem;
 }
 
-/*
 window#waybar {
-    background-color: white;
+    background-color: transparent;
 }
-
-
-.modules-left {
-    padding-left: 2rem;
-}
-
-*/
 
 #tray {
-    padding: 0 2rem;
+    padding: 0 1rem;
+}
+
+.modules-left {
+    margin-left: 1rem;
 }
 
 .modules-right {
-    padding-right: 2rem;
+    margin-right: 2rem;
+}
+
+#clock,
+#cpu,
+#memory,
+#wireplumber,
+#tray {
+    padding: 0 0.5rem;
 }
