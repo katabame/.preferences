@@ -115,11 +115,4 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-. "$HOME/.cargo/env"
-
-export DENO_INSTALL="/home/katabame/.deno"
-export PATH="$DENO_INSTALL/bin:$PATH"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH=$BUN_INSTALL/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH

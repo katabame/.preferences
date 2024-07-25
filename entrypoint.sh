@@ -10,3 +10,6 @@ rm -rf $HOME/.config/hypr && ln -fsn $HOME/.preferences/.config/hypr $HOME/.conf
 rm -rf $HOME/.bashrc && ln -fsn $HOME/.preferences/.bashrc $HOME/.bashrc
 rm -rf $HOME/.gitconfig && ln -fsn $HOME/.preferences/.gitconfig $HOME/.gitconfig
 rm -rf $HOME/.profile && ln -fsn $HOME/.preferences/.profile $HOME/.profile
+
+rm -rf $HOME/.local/share/fcitx5/themes && ln -fsn $HOME/.preferences/.local/share/fcitx5/themes $HOME/.local/share/fcitx5/
+rm -rf $HOME/.icons && ln -fsn $HOME/.preferences/.icons $HOME/.icons

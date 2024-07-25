@@ -39,8 +39,10 @@ window#waybar {
 
 #clock,
 #cpu,
+#disk,
 #memory,
 #wireplumber,
 #tray {
     padding: 0 0.5rem;
+    color: white;
 }
