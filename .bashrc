@@ -115,4 +115,10 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-export PATH=$HOME/.local/bin:$PATH
+
+#export PATH=$HOME/.local/bin:$PATH
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH=$BUN_INSTALL/bin:$PATH
+. "/home/katabame/.deno/env"
