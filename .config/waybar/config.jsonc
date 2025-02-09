@@ -6,6 +6,7 @@
 	"modules-center": ["hyprland/workspaces"],
 	"modules-right": [
 		"mpris",
+		"custom/updates",
 		"cpu",
 		"memory",
 		"disk",
@@ -49,6 +50,18 @@
 		"interval": 1
 	},
 
+	"custom/updates": {
+		"format": "{} {icon}",
+		"return-type": "json",
+		"format-icons": {
+			"has-updates": "",
+			"updated": "",
+			"interval": 3600
+		},
+		"exec-if": "which waybar-module-pacman-updates",
+		"exec": "waybar-module-pacman-updates"
+	},
+
 	"cpu": {
 		"interval": 1,
 		"format": " <tt>{icon} {icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7}</tt>",
@@ -80,7 +93,7 @@
 		"format": "{icon} {volume}%",
 		"format-muted": " mute",
 		"format-icons": ["", "", ""],
-		"on-click": "helvum",
+		"on-click": "pavucontrol",
 		"on-click-right": "wpctl set-mute @DEFAULT_SINK@ toggle"
 	},
 
