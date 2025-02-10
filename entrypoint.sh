@@ -11,5 +11,5 @@ rm -rf $HOME/.config/alacritty && ln -fsn $HOME/.preferences/.config/alacritty $
 rm -rf $HOME/.bashrc    && ln -fsn $HOME/.preferences/.bashrc $HOME/.bashrc
 rm -rf $HOME/.gitconfig && ln -fsn $HOME/.preferences/.gitconfig $HOME/.gitconfig
 
-rm -rf $HOME/.local/share/fcitx5/themes && ln -fsn $HOME/.preferences/.local/share/fcitx5/themes $HOME/.local/share/fcitx5/
+rm -rf $HOME/.local/share/fcitx5/themes && ln -fsn $HOME/.preferences/.local/share/fcitx5 $HOME/.local/share/fcitx5
 rm -rf $HOME/.icons                     && ln -fsn $HOME/.preferences/.icons $HOME/.icons
