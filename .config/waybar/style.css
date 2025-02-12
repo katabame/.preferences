@@ -42,7 +42,14 @@ window#waybar {
 #disk,
 #memory,
 #wireplumber,
-#tray {
+#tray,
+#mpris,
+#custom-updates {
     padding: 0 0.5rem;
+    color: white;
+}
+
+#workspaces button
+{
     color: white;
 }
