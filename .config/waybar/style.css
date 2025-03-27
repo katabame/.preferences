@@ -44,7 +44,8 @@ window#waybar {
 #wireplumber,
 #tray,
 #mpris,
-#custom-updates {
+#custom-updates,
+#custom-pacman {
     padding: 0 0.5rem;
     color: white;
 }

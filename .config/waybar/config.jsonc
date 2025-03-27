@@ -51,15 +51,15 @@
 	},
 
 	"custom/updates": {
-		"format": "{} {icon}",
+		"format": "{icon} {0}",
 		"return-type": "json",
 		"format-icons": {
-			"has-updates": "",
-			"updated": "",
-			"interval": 3600
+			"pending-updates": "",
+			"updated": ""
 		},
-		"exec-if": "which waybar-module-pacman-updates",
-		"exec": "waybar-module-pacman-updates"
+		"exec-if": "which waybar-updates -n -t {}",
+		"exec": "waybar-updates -n -t {}",
+		"on-click": "alacritty -e yay"
 	},
 
 	"cpu": {
