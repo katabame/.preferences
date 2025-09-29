@@ -51,7 +51,7 @@
 	},
 
 	"custom/updates": {
-		"format": "{icon} {0}",
+		"format": "{0} {icon}",
 		"return-type": "json",
 		"format-icons": {
 			"pending-updates": "",
@@ -64,7 +64,7 @@
 
 	"cpu": {
 		"interval": 1,
-		"format": " <tt>{icon} {icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7}</tt>",
+		"format": "<tt>{icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7} {icon}</tt> ",
 		"format-icons": [
 			"<span color='#a6d189'>▁</span>", // green
 			"<span color='#81c8be'>▂</span>", // teal
@@ -79,18 +79,18 @@
 
 	"memory": {
 		"interval": 1,
-		"format": " {percentage}%",
+		"format": "{percentage}% ",
 		"tooltip-format": "Total: {total:.1f}GiB\nUsed: {used:.1f}GiB\nFree: {avail:.1f}GiB"
 	},
 
 	"disk": {
 		"interval": 30,
-		"format": " {percentage_used}%",
+		"format": "{percentage_used}% ",
 		"tooltip-format": "Total: {total}\nUsed: {used}\nFree: {free}"
 	},
 
 	"wireplumber": {
-		"format": "{icon} {volume}%",
+		"format": "{volume}% {icon}",
 		"format-muted": " mute",
 		"format-icons": ["", "", ""],
 		"on-click": "pavucontrol",
