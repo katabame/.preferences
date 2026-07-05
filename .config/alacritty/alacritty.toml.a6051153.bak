@@ -10,8 +10,3 @@ import = [
 	"~/.config/alacritty/catppuccin-frappe.toml"
 ]
 
-
-[[keyboard.bindings]]
-key = "Return"
-mods = "Shift"
-chars = "\x1b\r"
